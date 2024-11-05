@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s | RealMedia",
     default: "RealMedia",
   },
-  description: "Social Media by Real Media",
+  description: "Social Media For Real Media",
 };
 
 export default function RootLayout({
