@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
       dynamic: 30,
     },
   },
+
+  //  for lucia-auth
+  serverExternalPackages: ["@node-rs/argon2"],
 };
 
 export default nextConfig;

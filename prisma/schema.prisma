@@ -20,11 +20,12 @@ model User {
   username     String    @unique
   displayName  String
   email        String?   @unique
+  // for password login
   passwordHash String?
   googleId     String?   @unique
   avatarUrl    String?
   bio          String?
-  Session      Session[]
+  sessions     Session[]
 
   createdAt DateTime @default(now())
 
