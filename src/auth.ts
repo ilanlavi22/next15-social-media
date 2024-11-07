@@ -30,7 +30,7 @@ export const lucia = new Lucia(adapter, {
 // connecting lucia to the types in the database via lucia Register interface
 declare module "lucia" {
   interface Register {
-    lucia: typeof lucia;
+    Lucia: typeof lucia;
     DatabaseUserAttributes: DatabaseUserAttributes;
   }
 }
@@ -43,7 +43,8 @@ interface DatabaseUserAttributes {
   googleId: string | null;
 }
 
-// prevent duplicate requests for caching. one database request for all components
+// prevent duplicate requests for caching. one database request for all components (only for server components)
+// thats why for client components i created a session provider
 export const validateRequest = cache(
   async (): Promise<
     { user: User; session: Session } | { user: null; session: null }
@@ -59,6 +60,7 @@ export const validateRequest = cache(
     }
 
     const result = await lucia.validateSession(sessionId);
+    // console.log(result);
 
     try {
       if (result.session && result.session.fresh) {

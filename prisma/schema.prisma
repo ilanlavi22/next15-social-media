@@ -20,7 +20,6 @@ model User {
   username     String    @unique
   displayName  String
   email        String?   @unique
-  // for password login
   passwordHash String?
   googleId     String?   @unique
   avatarUrl    String?
@@ -40,7 +39,7 @@ model Session {
   id        String   @id
   userId    String
   expiresAt DateTime
-  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("sessions")
 }
